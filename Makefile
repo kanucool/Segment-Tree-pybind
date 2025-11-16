@@ -1,11 +1,14 @@
 PYTHON_INCLUDES := $(shell python3.13-config --includes)
 PYTHON_LDFLAGS := $(shell python3.13-config --ldflags)
 
+# Replace with your own path
+PYBIND11_INCLUDE_PATH = /home/kanucool/.local/lib/python3.13/site-packages/pybind11/include
+
 # Compiler
 CXX = g++
 
 # Flags
-CXXFLAGS = -Wall -Werror $(PYTHON_INCLUDES) -I/home/kanucool/.local/lib/python3.13/site-packages/pybind11/include
+CXXFLAGS = -Wall -Werror $(PYTHON_INCLUDES) -I$(PYBIND11_INCLUDE_PATH)
 LD_FLAGS = $(PYTHON_LDFLAGS)
 
 # Target and sources
@@ -23,3 +26,4 @@ $(TARGET): $(OBJ)
 
 clean:
 	rm -f $(TARGET) *.o
+
